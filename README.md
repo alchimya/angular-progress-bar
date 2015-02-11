@@ -3,13 +3,13 @@ A very simple implementation of a progress bar with an AngularJs directive
 
 # How to use
 
-  attribute name    |     type        |   description    
---------------------| ----------------|-----------------------------------------------
-value               | two-way binding | sets the current position of the progress bar
-maxValue            | one-way binding | sets the maximum value of the range of the control
-classProgress       | one-way binding | sets the Cascading Style Sheet (CSS) class for the container
-classPercent        | one-way binding | sets the Cascading Style Sheet (CSS) class for the percent label
-classBar            | one-way binding | sets the Cascading Style Sheet (CSS) class for the bar
+  attr name   |     type        |   description    
+--------------| ----------------|-------------------------------------------------------------------
+value         | two-way binding | sets the current position of the progress bar
+maxValue      | one-way binding | sets the maximum value of the range of the control
+classProgress | one-way binding | sets the Cascading Style Sheet (CSS) class for the container
+classPercent  | one-way binding | sets the Cascading Style Sheet (CSS) class for the percent label
+classBar      | one-way binding | sets the Cascading Style Sheet (CSS) class for the bar
 
 ```javascript
 <ng-dv-progress-bar
