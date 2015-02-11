@@ -77,27 +77,35 @@ ngDvProgressBar.directive('ngDvProgressBar',function(){
         '</div>',
         link:function(scope,element,attrs){
 
-            //get the progress bar element from template
+            //gets the progress bar element from template
             var _divs=element.find('div');
             var _progress=_divs[0];
             var _bar=_divs[1];
             var _percent=element.find('span')[0];
 
-            //get some css properties from the element
-            var _width=element.css("width")=="" ?"500px":element.css("width");
-            var _height=element.css("height")=="" ?"20px":element.css("height");
+            //gets some css properties from the element
+            var _width=element.css("width") ? element.css("width") : "500px"  ;
+            var _height=element.css("height") ? element.css("height") : "20px"  ;
+
+            //sets maxValue into a local var
+            var _maxValue=scope.maxValue===undefined ? 0 : scope.maxValue;
 
 
             scope.$watch("value",function(newValue, oldValue){
                 //watching on the value
-                //calc the current progress value
-                var value=Math.round((newValue*100)/scope.maxValue);
+
+                if (_maxValue==0 || newValue===undefined){
+                    return;
+                }
+                //calculates the current progress value
+                var value=Math.round((newValue*100)/_maxValue);
                 _bar.style.width=value + '%';
                 _percent.innerText= value.toString() + '%';
+
             });
 
             var setDefaultLayout=function(){
-                //set the default layout of the progressbar
+                //sets the default layout of the progress bar
 
                 //progress style
                 if (scope.classProgress===undefined){
