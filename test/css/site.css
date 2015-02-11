@@ -1,0 +1,21 @@
+
+.progress {
+
+    width: 1000px;
+    border: 1px solid black;
+    position: relative;
+    padding: 3px;
+}
+
+.percent {
+    position: absolute;
+    left: 95%;
+    color:darkblue;
+
+}
+
+.bar {
+    background: red;
+    height: 20px;
+    width: 30%;
+}
