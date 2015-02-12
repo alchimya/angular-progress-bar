@@ -8,10 +8,10 @@
  * Represents a progress bar control.
  * @isolated_scope
  * ------------------------------------------------------------------------------------------------------
- * name             type                description
+ * attr name        type                description
  * ------------------------------------------------------------------------------------------------------
- * value            two-way binding     sets the current position of the progress bar.
- * maxValue         one-way binding     sets the maximum value of the range of the control.
+ * value            two-way binding     sets the current position of the progress bar
+ * maxValue         one-way binding     sets the maximum value of the range of the control
  * classProgress    one-way binding     sets the Cascading Style Sheet (CSS) class for the container
  * classPercent     one-way binding     sets the Cascading Style Sheet (CSS) class for the percent label
  * classBar         one-way binding     sets the Cascading Style Sheet (CSS) class for the bar
@@ -59,7 +59,7 @@
  *-------------------------------------------------------------
  */
 var ngDvProgressBar=angular.module('ngDvProgressBar',[]);
-ngDvProgressBar.directive('ngDvProgressBar',function(){
+ngDvProgressBar.directive('ngDvProgressBar',function($compile){
 
     return{
         restrict:'E',
@@ -79,17 +79,16 @@ ngDvProgressBar.directive('ngDvProgressBar',function(){
 
             //gets the progress bar element from template
             var _divs=element.find('div');
-            var _progress=_divs[0];
-            var _bar=_divs[1];
-            var _percent=element.find('span')[0];
+            var _progress=$compile(_divs[0])(scope);
+            var _bar=$compile(_divs[1])(scope);
+            var _percent=$compile(element.find('span')[0])(scope);
 
             //gets some css properties from the element
-            var _width=element.css("width") ? element.css("width") : "500px"  ;
-            var _height=element.css("height") ? element.css("height") : "20px"  ;
+            var _width=element.css('width') ? element.css('width') : "500px"  ;
+            var _height=element.css('height') ? element.css('height') : "20px"  ;
 
             //sets maxValue into a local var
             var _maxValue=scope.maxValue===undefined ? 0 : scope.maxValue;
-
 
             scope.$watch("value",function(newValue, oldValue){
                 //watching on the value
@@ -99,9 +98,8 @@ ngDvProgressBar.directive('ngDvProgressBar',function(){
                 }
                 //calculates the current progress value
                 var value=Math.round((newValue*100)/_maxValue);
-                _bar.style.width=value + '%';
-                _percent.innerText= value.toString() + '%';
-
+                _bar.css('width',value + '%')
+                _percent.text(value.toString() + '%');
             });
 
             var setDefaultLayout=function(){
@@ -109,27 +107,28 @@ ngDvProgressBar.directive('ngDvProgressBar',function(){
 
                 //progress style
                 if (scope.classProgress===undefined){
-                    _progress.style.width=_width;
-                    _progress.style.border="1px solid black";
-                    _progress.style.position="relative";
+                    _progress
+                        .css('width',_width)
+                        .css('border','1px solid black')
+                        .css('position','relative');
                 }
                 //percent style
                 if (scope.classPercent===undefined){
-                    _percent.style.position="absolute";
-                    _percent.style.left="50%";
-                    _percent.style.lineHeight=_height;
-                    _percent.style.verticalAlign="middle";
+                    _percent
+                        .css('position','absolute')
+                        .css('left','50%')
+                        .css('lineHeight',_height)
+                        .css('verticalAlign','middle')
                 }
                 //bar style
                 if (scope.classBar===undefined){
-                    _bar.style.height=_height;//"20px";
-                    _bar.style.backgroundColor="orange";
+                    _bar
+                        .css('height',_height)
+                        .css('backgroundColor','orange');
                 }
 
             };
-
             setDefaultLayout();
-
         }
     };
 
