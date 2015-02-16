@@ -84,8 +84,8 @@ ngDvProgressBar.directive('ngDvProgressBar',function($compile){
             var _percent=$compile(element.find('span')[0])(scope);
 
             //gets some css properties from the element
-            var _width=element.css('width') ? element.css('width') : "500px"  ;
-            var _height=element.css('height') ? element.css('height') : "20px"  ;
+            var _width=element.css("width") ? element.css("width") : "500px"  ;
+            var _height=element.css("height") ? element.css("height") : "20px"  ;
 
             //sets maxValue into a local var
             var _maxValue=scope.maxValue===undefined ? 0 : scope.maxValue;
@@ -98,8 +98,8 @@ ngDvProgressBar.directive('ngDvProgressBar',function($compile){
                 }
                 //calculates the current progress value
                 var value=Math.round((newValue*100)/_maxValue);
-                _bar.css('width',value + '%')
-                _percent.text(value.toString() + '%');
+                _bar.css("width",value + "%")
+                _percent.text(value.toString() + "%");
             });
 
             var setDefaultLayout=function(){
@@ -108,23 +108,23 @@ ngDvProgressBar.directive('ngDvProgressBar',function($compile){
                 //progress style
                 if (scope.classProgress===undefined){
                     _progress
-                        .css('width',_width)
-                        .css('border','1px solid black')
-                        .css('position','relative');
+                        .css("width",_width)
+                        .css("border","1px solid black")
+                        .css("position","relative");
                 }
                 //percent style
                 if (scope.classPercent===undefined){
                     _percent
-                        .css('position','absolute')
-                        .css('left','50%')
-                        .css('lineHeight',_height)
-                        .css('verticalAlign','middle')
+                        .css("position","absolute")
+                        .css("left","50%")
+                        .css("lineHeight",_height)
+                        .css("verticalAlign","middle")
                 }
                 //bar style
                 if (scope.classBar===undefined){
                     _bar
-                        .css('height',_height)
-                        .css('backgroundColor','orange');
+                        .css("height",_height)
+                        .css("backgroundColor","orange");
                 }
 
             };
