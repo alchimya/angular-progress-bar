@@ -58,8 +58,8 @@
  * });
  *-------------------------------------------------------------
  */
-var ngDvProgressBar=angular.module('ngDvProgressBar',[]);
-ngDvProgressBar.directive('ngDvProgressBar',function($compile){
+var ngDvProgressBarModule=angular.module('ngDvProgressBarModule',[]);
+ngDvProgressBarModule.directive('ngDvProgressBar',function($compile){
 
     return{
         restrict:'E',
