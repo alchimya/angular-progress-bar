@@ -25,3 +25,7 @@ classBar      | one-way binding | sets the Cascading Style Sheet (CSS) class for
         class-percent="myPercentClass">
 </ng-dv-progress-bar>
 ```
+
+
+<br/>
+![ScreenShot](https://raw.github.com/alchimya/angular-progress-bar/master/screenshots/angular-progress-bar.gif)
